@@ -41,15 +41,15 @@ void WebBooter::OpenBrowser(const std::string& search)
         url = "https://www.google.com/search?q=" + search;
     }
 
-#ifdef _WIN32
-    std::string command = "start \"\" \"" + url + "\"";
-#elif __APPLE__
-    std::string command = "open \"" + url + "\"";
-#elif __linux__
-    std::string command = "xdg-open \"" + url + "\"";
-#else
-    return;
-#endif
+    #ifdef _WIN32
+        std::string command = "start \"\" \"" + url + "\"";
+    #elif __APPLE__
+        std::string command = "open \"" + url + "\"";
+    #elif __linux__
+        std::string command = "xdg-open \"" + url + "\"";
+    #else
+        return;
+    #endif
 
     std::system(command.c_str());
 }
