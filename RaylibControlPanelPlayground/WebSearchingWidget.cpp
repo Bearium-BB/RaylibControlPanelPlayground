@@ -1,5 +1,5 @@
 #include "WebSearchingWidget.hpp"
-extern int isRun;
+#include "GameState.hpp"
 
 void WebSearchingWidget::Draw() 
 {
@@ -55,14 +55,17 @@ WebSearchingWidget::WebSearchingWidget(int posX, int posY, int keyPadding, int c
         keyWidget.onClick([letter, this]() { textBoxWidget.AddLetter(letter); });
         keyWidgets.push_back(keyWidget);
     }
+    int enterWidgetIndexPosition = (urlCharacters.size() + ((urlCharacters.size()-1) % columnSize));
+    int backspaceWidgetIndexPosition = (urlCharacters.size() + ((urlCharacters.size() - 1) % columnSize))+2;
+    int closeButtonWidgetIndexPosition = (urlCharacters.size() + ((urlCharacters.size() - 1) % columnSize))+5;
 
-    KeyWidget enterWidget(100, 140 + (37 / 6) * keyWidgetSize + keyPadding, 110, 50, "Enter", BLUE, GREEN, PURPLE, 30);
-    KeyWidget backspaceWidget(100 + (38 % 6) * keyWidgetSize + keyPadding, 140 + (38 / 6) * keyWidgetSize + keyPadding, 170, 50, "Backspace", BLUE, GREEN, PURPLE, 30);
-    KeyWidget closeButtonWidget(100 + (41 % 6) * keyWidgetSize + keyPadding, 140 + (41 / 6) * keyWidgetSize + keyPadding, 110, 50, "ESC", BLUE, GREEN, PURPLE, 30);
+    KeyWidget enterWidget(100+ (enterWidgetIndexPosition % columnSize) * (keyWidgetSize + keyPadding), 140 + (enterWidgetIndexPosition / columnSize) * (keyWidgetSize + keyPadding), 110, 50, "Enter", BLUE, GREEN, PURPLE, 30);
+    KeyWidget backspaceWidget(100 + (backspaceWidgetIndexPosition % columnSize) * (keyWidgetSize + keyPadding), 140 + (backspaceWidgetIndexPosition / columnSize) * (keyWidgetSize + keyPadding), 170, 50, "Backspace", BLUE, GREEN, PURPLE, 30);
+    KeyWidget closeButtonWidget(100 + (closeButtonWidgetIndexPosition % columnSize) * (keyWidgetSize + keyPadding), 140 + (closeButtonWidgetIndexPosition / columnSize) * (keyWidgetSize + keyPadding), 110, 50, "ESC", BLUE, GREEN, PURPLE, 30);
 
     enterWidget.onClick([this]() { webBooter.OpenBrowser(textBoxWidget.GetText()); });
     backspaceWidget.onClick([this]() { textBoxWidget.RemoveLetter(); });
-    closeButtonWidget.onClick([]() { isRun = 0; });
+    closeButtonWidget.onClick([]() { GameState::isRun = 0; });
 
 
     keyWidgets.push_back(enterWidget);

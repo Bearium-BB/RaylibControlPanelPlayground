@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClCompile Include="RaylibControlPanelPlayground.cpp" />
     <ClCompile Include="KeyWidget.cpp" />
-    <ClCompile Include="TextBoxWidget..cpp" />
+    <ClCompile Include="TextBoxWidget.cpp" />
     <ClCompile Include="WebBooter.cpp" />
     <ClCompile Include="WebSearchingWidget.cpp" />
   </ItemGroup>
@@ -149,6 +149,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameState.hpp" />
     <ClInclude Include="KeyWidget.hpp" />
     <ClInclude Include="TextBoxWidget.hpp" />
     <ClInclude Include="WebBooter.hpp" />

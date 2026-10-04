@@ -21,7 +21,7 @@
     <ClCompile Include="KeyWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextBoxWidget..cpp">
+    <ClCompile Include="TextBoxWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WebBooter.cpp">
@@ -45,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WebSearchingWidget.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
